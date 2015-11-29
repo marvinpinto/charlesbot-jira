@@ -1,0 +1,30 @@
+language: python
+sudo: false
+python:
+  - "3.4"
+
+install:
+  - pip install -U twine
+  - make install
+  - ./env/bin/pip install coveralls
+
+script:
+  - make checkstyle
+  - make test
+
+after_success:
+  - ./env/bin/coveralls
+
+deploy:
+- provider: pypi
+  user: marvinpinto
+  password:
+    secure: "Ncg1eUmi4Gx5zqhCjRuZsyKdVo8m+yRibSK3BuAlaEtwk6BjR795a9gf3FYq7aKkdKZneCTiwmKlrurki5UaIcj54KzOcI+5wjLnF5N2FiUxh41Y4W/WNjNHSo7MswSNeaaMIjLNJjUUKlQPlGg0a8gLm+52YukRU/86LkTgznnKBn8vjM2pu/O0d/ceUYobJo4+HNFfTAYYXuUKE+bKm1+1gdSHUZaT4mpCk/o8RkRsjTok4VK2ZMD97ACWmaLRQwKkZHp2pWohoA8JPSSf0EZtiEvSzk/o7tLljsPm4JDGUm3XLRJges/HwSy33PSdpmw44CJdZxy8/OYc34SPvx+L1Q4TD8a0vJZJdbzzPXlhhyHZqJLFpkgM6Vo/kWcZaRn0OdSSE5svAwY6+hPcETI65h4cvOr9a90pEQqcXicZhoQ5EBYwFxT4PacKlRfwEyZT4lBej7hGPSnByhKZucVDYzZ9DVcl2RWt6LVoeyFgkH4JE33G/AV2Fz5uuWgvEzDj5VLQfLq5neZE5uNhoO78von8qnqYQCVlkE9lYHpSuMzLBhDmW+OOfQLeZ/1as4zqVhlEurCSDlyzvbTD+w1TnbjQfaM2Omm6xUlRF87rNb5DnmVyhKu8AKk7wZQIp3+QHJaWMboK3qgzzkP7q3s5poe0McOjq1u/16QfpUI="
+  on:
+    tags: true
+    repo: marvinpinto/charlesbot-jira
+
+notifications:
+  email: false
+  irc:
+    - secure: "r1Wblg52j6YoyikIVBBdepJ9GjXhECViu6MXx+YiSVnyhRdk9dlrvyVkFGRdLm01lf3Hqa/kkr0klvynRwyZ+nBKrRNmgKncI27WIUSW6ohiuWBbHAvFQNctG9rhg5uhs+kjrIhFbxK5Ucu9gyAiYx/ZoBdyzvR2cIUusKcsACE2YFoH49ovpid5roZdJwRodFQ2eJXWVSgSwKYvFZgwJyig/U+mnrcb/pSCOGt20f6fqaxJJT8feJZ/cQc8fsyhNGe9qbzzBfBirrDBlE8sM/j3/jD3oWvQ0YBTsaHF7R6+b71r65yNYuqqCi+IiICNOYhDumbXBaym4dt4ZrmbxcjSPfxxKuEtxOq06cs2bvKSw8fyrJ6xscixpcHh2ikv7C6V5f3kMYpr3G49s2ilOc0hGJO0y2OMCsVPp+BUDtKHp1mRpHO/X7iFh6/n2HXEjdXc4b9dS34FQsFEgjoLdmBRQRBinht8RY1MJjltyBEWBbWfoEHRUWrFNHiCgF3hbKr+0691jeqVruAQ/jSkdQiRupTkt0WzRmY1hxhR+4mc5klTP/IcxbKcDGocjTRjBusvxIj7XXY6PyJLss7i/EaPovD2NWtZVNnLHPjpEyqeuBaGhqzBhmVdtU8YjB+P+63R6dTWzjxIJftTRwtVN7++AVoqFDrYEq/Ay3u6H+0="
