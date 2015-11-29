@@ -17,7 +17,7 @@ test_requirements = [
 
 setup(
     name='charlesbot-jira',
-    version='0.1.0',
+    version='0.2.0',
     description="Charlesbot Jira plugin",
     long_description=readme,
     author="Marvin Pinto",
