@@ -1,0 +1,2 @@
+charlesbot==0.7.0
+wheel==0.24.0

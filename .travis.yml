@@ -1,0 +1,28 @@
+language: python
+sudo: false
+python:
+  - "3.4"
+
+install:
+  - pip install -U twine
+  - make install
+  - ./env/bin/pip install coveralls
+
+script:
+  - make checkstyle
+  - make test
+
+after_success:
+  - ./env/bin/coveralls
+
+deploy:
+- provider: pypi
+  user: marvinpinto
+  password:
+    secure: "super secure pypi hashed password using the travis gem"
+  on:
+    tags: true
+    repo: marvinpinto/charlesbot-jira
+
+notifications:
+  email: false
