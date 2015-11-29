@@ -12,7 +12,7 @@ Charlesbot Jira plugin
     :target: LICENSE.txt
     :alt: Software License
 
-A Charlesbot__ plugin to do a really awesome thing!
+A Charlesbot__ plugin that interacts with Jira and does some cool shit.
 
 __ https://github.com/marvinpinto/charlesbot
 
@@ -20,13 +20,10 @@ __ https://github.com/marvinpinto/charlesbot
 How does this work
 ------------------
 
-This plugin adds the following ``!help`` targets:
+Whenever a person types something in chat that looks like a Jira ticket, this
+plugin grabs a bunch of information about that ticket and prints it in chat.
 
-.. code:: text
-    !command - Do a thing!
-
-TODO: Fill in a description about what this plugin does and how it works.
-Screenshots are helpful, too!
+.. image:: https://raw.githubusercontent.com/marvinpinto/charlesbot-jira/master/images/jira.png
 
 
 Installation
@@ -51,7 +48,13 @@ entry to the ``main`` section:
       enabled_plugins:
         - 'charlesbot_jira.jira.Jira'
 
-TODO: If there is any more configuration, mention it here.
+Then add a ``jira`` dictionary block that looks something like:
+
+.. code:: yaml
+
+    jira:
+      base_url: 'https://jira.atlassian.com'
+
 
 Sample config file
 ~~~~~~~~~~~~~~~~~~
@@ -63,6 +66,8 @@ Sample config file
       enabled_plugins:
         - 'charlesbot_jira.jira.Jira'
 
+    jira:
+      base_url: 'https://jira.atlassian.com'
 
 License
 -------
